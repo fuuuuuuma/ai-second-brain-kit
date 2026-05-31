@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Obsidian の個人設定（テンプレ配布には含めない）
+.obsidian/
+
+# 一時ファイル
+*.tmp
+*.log

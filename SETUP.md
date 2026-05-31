@@ -108,6 +108,21 @@
    - 日付はユーザーに確認するか、ユーザー環境のコマンドで取得する。推測で埋めない。
 3. `wiki/moc/` に、Step 0 のドメインに沿った最初の MOC を1枚作る（例：ドメインが「動画制作」なら `wiki/moc/動画制作.md`）。
 
+> ノートを書くときは Obsidian Flavored Markdown の規約に従う（同梱スキル `obsidian-flavored-markdown` 参照）：内部リンクは `[[wikilink]]`、メタは frontmatter（type/status/date/topic/tags）、強調は callout `> [!note]`。
+
+---
+
+## Step 5.5. スキルを案内する（任意・推奨）
+
+ユーザーが Claude Code / Codex を使う場合、次を案内する（必須ではない）。
+
+- 本キット同梱スキル：`second-brain`（構築・運用）/ `obsidian-flavored-markdown`（構文）/ `web-clip`（取り込み）。リポジトリを読ませている時点で利用可能。
+- さらに深い Obsidian 構文（Bases `.base` / Canvas `.canvas` / Obsidian CLI / Defuddle）が欲しければ、公式の [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) のインストールを薦める：
+  ```
+  /plugin marketplace add kepano/obsidian-skills
+  /plugin install obsidian@obsidian-skills
+  ```
+
 ---
 
 ## Step 6. 動作確認と引き継ぎ
@@ -128,7 +143,8 @@
 - **Memory / Home の保守**：オーナーの前提・進行中・判断基準が変わったら `Memory.md` を更新する。重要ノート・MOC・進行中の案件が増えたら `Home.md` にリンクを1行足す。
 - **ユーザーに訂正されたら**：その場で `rules/corrections.md` に3行で追記する（フォーマットは同ファイル参照）。
 - **同じ失敗を指摘されたら**：`rules/mistakes.md` に追記し、再発防止ルールを書く。
-- **素材を渡されたら**：`raw/` に置き、`wiki/` に概念ページとして構造化し、`wiki/index.md` を更新する。
+- **素材を渡されたら**：`raw/` に置き、`wiki/` に概念ページとして構造化し、`wiki/index.md` を更新する。WebページのURLを渡されたら `web-clip` スキル（Defuddle）でクリーンに取り込む。
+- **ノートを書くとき**：Obsidian Flavored Markdown に従う（`[[wikilink]]`・frontmatter・callout）。詳細は `obsidian-flavored-markdown` スキル。
 - **問いに答えるとき**：結論をファイル（`reports/`）として残し、参照した `wiki/` ページにリンクする。
 - **`raw/` は読み取り専用**：削除・改名しない。
 - **命名と分類**：`rules/naming.md` に従う。フォルダで細かく分類しない（`outputs/` を除く）。

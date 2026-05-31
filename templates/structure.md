@@ -58,3 +58,6 @@
 - **整理は分類でなくリンクで**：`raw/` に放り込み、`wiki/` で `[[リンク]]` を張って繋ぐ。フォルダを増やさない。
 - **入力と知識を分ける**：`raw/`（生）と `wiki/`（整理済み）を混ぜない。
 - **答えを残す**：問いへの答えは `reports/` にファイル化し、次の問いの素材にする。
+- **Obsidian 構文で書く**：wikilink・frontmatter・callout を使う（`obsidian-flavored-markdown` スキル）。
+
+> 補足：この `structure.md` が定義するのは「ユーザーのVaultに作る構造」。リポジトリ直下の `skills/`（Agent Skills）と `.claude-plugin/`（配布マニフェスト）はVaultには入れず、エージェント側で使う。

@@ -17,12 +17,13 @@ AIを使っていて、こんな経験はありませんか。
 
 これらは **AIの賢さの問題ではなく、「覚えておく場所」と「ルール」を渡していない構造の問題** です。
 
-このキットは、その「覚えておく場所」と「ルール」を最初からセットで作ります。特徴は4つ。
+このキットは、その「覚えておく場所」と「ルール」を最初からセットで作ります。特徴は5つ。
 
 1. **あなたの引き継ぎ書（Memory.md）＋ 玄関（Home.md）【必須】** — `Memory.md` はAIが起動時に必ず読む“あなたについての事実”（事業・体制・判断基準）。`Home.md` は主要ノートへの目次。この2枚が、毎回ゼロから説明する手間を消します。
 2. **全体ルール（CLAUDE.md / AGENTS.md）** — AIがセッション開始時に必ず読む“憲法”。振る舞い・文体・安全ルールを1か所に集約。
 3. **修正指示の自動蓄積（rules/corrections.md）** — 一度「こう直して」と言った内容が記録され、次回以降もAIが守る。言い直しが消えます。
 4. **整理いらずの知識構造（raw / wiki / reports）** — 素材は放り込むだけ。構造化・リンク・整理はAIが担当します。
+5. **同梱の Agent Skills** — `second-brain`（構築・運用）/ `obsidian-flavored-markdown`（正しいObsidian構文で書く）/ `web-clip`（Webをクリーンに取り込む）。Claude Code・Codex 等が自動で使えます（[Agent Skills 仕様](https://agentskills.io/specification)準拠）。
 
 ---
 
@@ -80,6 +81,38 @@ MyBrain/                    ← あなたの Vault（保管庫）
 
 各ファイルの中身のひな型は [`templates/`](templates/) にあります。
 
+> リポジトリ自体の構成は「Vaultに入る雛形（`templates/`）」と「エージェントが使うスキル（`skills/`）」に分かれています。`skills/` は Vault には入れず、エージェント側にインストールして使います。
+
+---
+
+## 同梱スキル（Agent Skills）と推奨インストール
+
+このキットには、[Agent Skills 仕様](https://agentskills.io/specification)に沿った3つのスキルが同梱されています（Claude Code / Codex CLI などが自動認識）。
+
+| スキル | 役割 |
+|---|---|
+| [`second-brain`](skills/second-brain) | Vaultの構築と毎セッションの運用（必読順・修正の蓄積・構造化・週次lint） |
+| [`obsidian-flavored-markdown`](skills/obsidian-flavored-markdown) | wikilink / embed / callout / properties を正しく書く |
+| [`web-clip`](skills/web-clip) | Webページを Defuddle でクリーンなMarkdownにして `raw/` へ |
+
+プラグインとして入れる場合：
+
+```
+/plugin marketplace add fuuuuuuma/ai-second-brain-kit
+/plugin install ai-second-brain@ai-second-brain-kit
+```
+
+### あわせて入れると強力（公式・Obsidian CEO 製）
+
+より深い Obsidian 構文（**Bases** `.base` 動的データベース、**Canvas** `.canvas` 視覚マップ、**Obsidian CLI**、**defuddle**）は、公式スキル集を併用すると一段強化されます。
+
+```
+/plugin marketplace add kepano/obsidian-skills
+/plugin install obsidian@obsidian-skills
+```
+
+→ [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills)（MIT）。本キットの `obsidian-flavored-markdown` / `web-clip` はこの要点を内製・要約したもので、公式を入れると Bases・Canvas・CLI まで扱えます。
+
 ---
 
 ## 設計の背景にある考え方
@@ -109,6 +142,7 @@ Obsidian は必須ではありませんが、`wiki/` のリンク構造やグラ
 
 - **Andrej Karpathy の "LLM Wiki"** — 「素材を放り込み、AIが構造化・整理する」中核思想。
 - **[AgriciDaniel/claude-obsidian](https://github.com/AgriciDaniel/claude-obsidian)** — `raw/ → wiki/`、`index`・`hot` キャッシュ、`/wiki` 系コマンド等を参考にした先行実装（MIT）。
+- **[kepano/obsidian-skills](https://github.com/kepano/obsidian-skills)** — Obsidian CEO（Stephan Ango）製の公式 Agent Skills（MIT）。Agent Skills 形式、Obsidian Flavored Markdown 規約、Defuddle 取り込みの要素を取り入れています。
 - **`Memory.md`（オンボーディング文書）/ `Home.md`（ハブ）** — Obsidian×AIを解説する各種記事で共有されている定番構成を取り入れています。
 
 このキットは上記を土台に、**日本語前提・エージェント中立（Claude/Codex/Cursor/Gemini）・修正指示の蓄積（corrections）** を足して再構成したものです。

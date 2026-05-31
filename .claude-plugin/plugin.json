@@ -1,0 +1,9 @@
+{
+  "name": "ai-second-brain",
+  "description": "AIエージェントに渡すと、AIが記憶喪失しない第二の脳(Obsidian Vault)の最適なファイル構造を自動構築するキット。全体ルール/修正指示の蓄積/命名規則/週次lint/Obsidian構文/Web取り込みを同梱。",
+  "version": "1.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "fuuuuuuma"
+  }
+}

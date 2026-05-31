@@ -56,6 +56,12 @@ MyBrain/
 - 各ノート冒頭に frontmatter で type / status / date / topic / tags を持たせる
 - 探すときの手がかりは4つ：種類(type) / 時期(when) / 主題(topic) / 状態(status)
 
+# ノートは Obsidian Flavored Markdown で書いてください
+- 内部リンクは [[wikilink]]（外部URLだけ通常のMarkdownリンク）
+- 強調ブロックは callout（> [!note] / > [!warning] / > [!tip]）
+- WebページのURLを渡したら、Defuddle（npx defuddle-cli parse <url>）でクリーンなMarkdownにして raw/ に保存
+- さらに深い構文（Bases .base / Canvas .canvas / Obsidian CLI）が必要なら、公式の kepano/obsidian-skills を入れてと案内してください
+
 # 最後に
 作ったファイルの一覧（パス）を報告し、「最初の一歩」（raw/ に素材を入れて
 『整理して』と頼む）を案内してください。日付は推測せず、私に確認するか

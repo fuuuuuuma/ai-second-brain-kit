@@ -1,0 +1,16 @@
+{
+  "name": "ai-second-brain-kit",
+  "owner": {
+    "name": "fuuuuuuma"
+  },
+  "plugins": [
+    {
+      "name": "ai-second-brain",
+      "source": "./",
+      "description": "AIが記憶喪失しない第二の脳(Obsidian Vault)を自動構築する Agent Skills。second-brain / obsidian-flavored-markdown / web-clip を同梱。",
+      "metadata": {
+        "version": "1.1.0"
+      }
+    }
+  ]
+}

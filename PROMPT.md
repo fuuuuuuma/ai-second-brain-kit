@@ -21,6 +21,8 @@
 MyBrain/
 ├── CLAUDE.md        # 全体ルール（憲法）。セッション開始時に必ず読む
 ├── AGENTS.md        # Codex等向け。CLAUDE.md を参照する1枚
+├── Memory.md        # 【必須】オーナーの引き継ぎ書（事実・前提・判断基準）。起動時に必読
+├── Home.md          # 【必須】Vaultの玄関（主要ノートへの目次・リンク集）
 ├── raw/             # 整理せず素材を放り込む（あなたは読むだけ・削除改名しない）
 ├── wiki/            # あなたが構造化して書く知識ページ
 │   ├── index.md     #   全ページの目次（あなたが自動更新）
@@ -35,8 +37,13 @@ MyBrain/
 │   └── lint.md         # 週次ヘルスチェックの観点
 └── templates/       # ノート雛形（daily/meeting/permanent/source/moc）
 
+# Memory.md と Home.md は必須です（省略しない）
+- Memory.md：私の引き継ぎ書。事業/活動の概要・体制・進行中・よく使うツール・目標・判断基準・文体を、上の4つの質問の答えで埋める。空欄が残ってもよいのでまず作る
+- Home.md：Vaultの玄関。Memory / CLAUDE / wiki/index / rules/* / daily / wiki/moc / reports へのリンクを集めた目次にする
+
 # CLAUDE.md には必ず次のルールを含めてください
-- セッション開始時に CLAUDE.md → rules/corrections.md → rules/mistakes.md → wiki/index.md の順で読む
+- セッション開始時に CLAUDE.md → Memory.md → rules/corrections.md → rules/mistakes.md → wiki/index.md の順で読む
+- 私の前提・進行中・判断基準が変わったら Memory.md を更新し、重要ノートが増えたら Home.md にリンクを足す
 - 私に訂正されたら、その場で rules/corrections.md に3行（日付 / 指摘内容 / 今後の動き）で追記する
 - 同じ失敗を指摘されたら rules/mistakes.md に追記し、再発防止ルールを書く
 - 素材を渡されたら raw/ に置き、wiki/ に概念ページとして構造化し、index.md を更新する

@@ -33,6 +33,8 @@
 {{VAULT}}/
 ├── CLAUDE.md
 ├── AGENTS.md
+├── Memory.md        ← 【必須】オーナーの引き継ぎ書
+├── Home.md          ← 【必須】Vaultの玄関（目次）
 ├── raw/
 ├── wiki/
 │   ├── index.md
@@ -53,6 +55,7 @@
     └── moc.md
 ```
 
+`Memory.md` と `Home.md` は **必須**。Vault ルートに必ず作成する（省略しない）。
 空フォルダには `.gitkeep` を置く（`raw/` `reports/` `outputs/` `wiki/moc/`）。
 
 ---
@@ -64,7 +67,19 @@
 3. Vault ルートに `CLAUDE.md` として保存する。
 4. `templates/AGENTS.md` を Vault ルートに `AGENTS.md` として保存する（Codex/他エージェント用。内容は CLAUDE.md を参照する1枚）。
 
-> **最重要**：CLAUDE.md には「セッション開始時に `rules/corrections.md` と `rules/mistakes.md` を必ず読む」「ユーザーに訂正されたら必ず `rules/corrections.md` に追記する」というルールが含まれている。ここを省略しないこと。
+> **最重要**：CLAUDE.md には「セッション開始時に `Memory.md` → `rules/corrections.md` → `rules/mistakes.md` を必ず読む」「ユーザーに訂正されたら必ず `rules/corrections.md` に追記する」というルールが含まれている。ここを省略しないこと。
+
+---
+
+## Step 2.5. Memory.md と Home.md を設置する（必須）
+
+この2ファイルは**必須**。省略しない。
+
+1. `templates/Memory.md` を読み込み、Step 0 の回答（業務ドメイン／使うエージェント／言語／判断基準・文体）でプレースホルダを埋め、Vault ルートに `Memory.md` として保存する。
+   - これはオーナーの「引き継ぎ書（オンボーディング文書）」。AIが起動時に最初に読む**事実の置き場**。空欄が残ってもよいので、まず作って配置する。
+2. `templates/Home.md` を Vault ルートに `Home.md` として保存する。
+   - Vaultの玄関（ハブ／目次）。`Memory` `CLAUDE` `wiki/index` `rules/*` などへのリンクが既に入っている。
+   - 日付プレースホルダ `{{YYYY-MM-DD}}` はユーザー環境の今日の日付で埋める（推測しない）。
 
 ---
 
@@ -97,8 +112,9 @@
 
 ## Step 6. 動作確認と引き継ぎ
 
-1. 作成したファイル一覧をユーザーに報告する（絶対パス）。
-2. 次の「最初の一歩」を案内する：
+1. 作成したファイル一覧をユーザーに報告する（絶対パス）。**`Memory.md` と `Home.md` が作成されていることを必ず確認**する。
+2. `Memory.md` の空欄が多い場合は、「ここを埋めるほどAIの回答が良くなる」と一言添える。
+3. 次の「最初の一歩」を案内する：
    - `raw/` に素材（記事・メモ・議事録）を放り込む
    - 「raw/ を読んで wiki/ に整理して」と頼む
    - 困ったら `daily/` に今日の1枚を書くところから
@@ -108,7 +124,8 @@
 
 ## 運用ルール（構築後、あなた＝エージェントが常に守ること）
 
-- **セッション開始時**：`CLAUDE.md` → `rules/corrections.md` → `rules/mistakes.md` → `wiki/index.md` の順に読む。
+- **セッション開始時**：`CLAUDE.md` → `Memory.md` → `rules/corrections.md` → `rules/mistakes.md` → `wiki/index.md` の順に読む。
+- **Memory / Home の保守**：オーナーの前提・進行中・判断基準が変わったら `Memory.md` を更新する。重要ノート・MOC・進行中の案件が増えたら `Home.md` にリンクを1行足す。
 - **ユーザーに訂正されたら**：その場で `rules/corrections.md` に3行で追記する（フォーマットは同ファイル参照）。
 - **同じ失敗を指摘されたら**：`rules/mistakes.md` に追記し、再発防止ルールを書く。
 - **素材を渡されたら**：`raw/` に置き、`wiki/` に概念ページとして構造化し、`wiki/index.md` を更新する。
